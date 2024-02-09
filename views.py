@@ -17,6 +17,7 @@ def index(request):
         for chave_valor in corpo.split('&'):
             if 'titulo' in chave_valor:
                 params['titulo'] = chave_valor[7:]
+                x = 0
             else:
                 params['detalhes'] = chave_valor[9:]
 
