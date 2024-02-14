@@ -1,4 +1,4 @@
-from utils import load_data, load_template
+from utils import load_data, load_template, nova_anotacao
 from urllib.parse import unquote_plus
 
 def index(request):
@@ -17,10 +17,9 @@ def index(request):
         for chave_valor in corpo.split('&'):
             if 'titulo' in chave_valor:
                 params['titulo'] = chave_valor[7:]
-                x = 0
             else:
                 params['detalhes'] = chave_valor[9:]
-
+        nova_anotacao(params, 'notes.json')
     # Cria uma lista de <li>'s para cada anotação
     # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('components/note.html')
