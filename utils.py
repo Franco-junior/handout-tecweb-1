@@ -24,3 +24,8 @@ def nova_anotacao(parametros, nome_arquivo):
     notas.append(parametros)
     with open(f'data/{nome_arquivo}', 'w') as arquivo:
         json.dump(notas, arquivo, indent=2)
+
+def build_response(body='', code=200, reason="OK", headers=''):
+    if code == 302:
+        return f'HTTP/1.1 {code} {reason}\n{headers}\n\n{body}'.encode()
+    return f'HTTP/1.1 {code} {reason}\n{headers}\n{body}'.encode()

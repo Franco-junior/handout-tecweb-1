@@ -1,4 +1,4 @@
-from utils import load_data, load_template, nova_anotacao
+from utils import load_data, load_template, nova_anotacao, build_response
 from urllib.parse import unquote_plus
 
 def index(request):
@@ -29,4 +29,4 @@ def index(request):
     ]
     notes = '\n'.join(notes_li)
 
-    return load_template('index.html').format(notes=notes).encode()
+    return build_response() + load_template('index.html').format(notes=notes).encode()
